@@ -134,6 +134,19 @@ bob?.department?.head?.name
 
 Such a chain returns *null*{: .keyword } if any of the properties in it is null.
 
+A safe call works with function calls as well as with properties. If the receiver of the safe call is null, then the function arguments are not evaluated:
+
+<div class="sample" markdown="1" theme="idea">
+```kotlin
+fun main() {
+//sampleStart
+    val c: String? = null
+    // readLine() below is not called because c == null
+    println(c?.substring(readLine()!!.toInt())) // prints null
+//sampleEnd
+}
+```
+
 To perform a certain operation only for non-null values, you can use the safe call operator together with [`let`](/api/latest/jvm/stdlib/kotlin/let.html):
 
 <div class="sample" markdown="1" theme="idea">
@@ -149,12 +162,34 @@ fun main() {
 ```
 </div>
 
-A safe call can also be placed on the left side of an assignment. Then, if one of the receivers in the safe calls chain is null, the assignment is skipped, and the expression on the right is not evaluated at all:
+A safe call can also be placed on the left side of an assignment, augmented assignment, or increment/decrement. If the receiver of the safe call is null, then the operation is skipped, and the expression on the right is not evaluated:
 
 <div class="sample" markdown="1" theme="idea" data-highlight-only>
 ```kotlin
 // If either `person` or `person.department` is null, the function is not called:
 person?.department?.head = managersPool.getManager()
+```
+</div>
+
+A safe call null-avoidance affects all `(...)` invocations and `[...]` index accesses that follow after it up and including the assignment. All of them are skipped if the receiver of the safe call is null:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+```kotlin
+// If `person` is null, then `timeSheet` map is neither queried, nor updated
+person?.timeSheet[date] += hours
+```
+</div>
+
+In cases when a nullable value is an immediate target of invocation or index access, a safe call can be used, too, to skip calls on null:
+
+<div class="sample" markdown="1" theme="idea">
+```kotlin
+fun main() {
+//sampleStart
+    val listOfFunctions: List<() -> Unit)>? = null
+    println(listOfFunctions?.[0]()) // prints null
+//sampleEnd
+}
 ```
 </div>
 

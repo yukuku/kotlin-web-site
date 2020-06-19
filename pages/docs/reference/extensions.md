@@ -157,6 +157,18 @@ fun Any?.toString(): String {
 
 </div>
 
+However, safe-call operator `?.` takes precedence of handling null values when used before extensions on nullable receivers:
+
+<div class="sample" markdown="1" theme="idea" data-highlight-only>
+
+```kotlin
+val obj: Int? = null 
+val s = obj?.toString() // s in null, not "null" string as the result of the safe-call
+```
+
+</div>
+  
+
 ## Extension properties
 
 Similarly to functions, Kotlin supports extension properties:
