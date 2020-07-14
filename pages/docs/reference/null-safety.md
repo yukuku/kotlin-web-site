@@ -146,6 +146,7 @@ fun main() {
 //sampleEnd
 }
 ```
+</div>
 
 To perform a certain operation only for non-null values, you can use the safe call operator together with [`let`](/api/latest/jvm/stdlib/kotlin/let.html):
 
