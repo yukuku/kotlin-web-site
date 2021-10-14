@@ -2,6 +2,7 @@ from os import path
 
 import yaml
 from bs4 import BeautifulSoup
+from yaml import FullLoader
 
 from src.processors.processors import process_code_blocks, process_header_ids
 
@@ -25,11 +26,11 @@ def process_titles(row_titles, title_prefix, path_folder, suffix):
 def load_api_titles(folder_path):
     api_title_files_path = path.join(folder_path, 'api', 'latest', 'jvm', 'stdlib', 'index.yml')
     with open(api_title_files_path) as title_files:
-        process_titles(yaml.load(title_files)[0], 'latest/jvm/stdlib', '.', '')
+        process_titles(yaml.load(title_files, Loader=FullLoader)[0], 'latest/jvm/stdlib', '.', '')
 
     test_title_files_path = path.join(folder_path, 'api', 'latest', 'kotlin.test', 'index.yml')
     with open(test_title_files_path) as title_files:
-        process_titles(yaml.load(title_files)[0], 'latest/kotlin.test',  '.', '')
+        process_titles(yaml.load(title_files, Loader=FullLoader)[0], 'latest/kotlin.test',  '.', '')
 
 
 def get_api_page(build_mode: bool, page_path, dir_path=root_folder):

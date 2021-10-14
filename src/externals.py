@@ -4,6 +4,8 @@ from os import path
 import yaml
 import shutil
 
+from yaml import FullLoader
+
 from src.github import assert_valid_git_hub_url
 
 root_folder = path.normpath(path.join(os.path.dirname(__file__), '..'))
@@ -245,7 +247,7 @@ def _process_external_key(build_mode, data) -> list:
         return [data]
 
     with open(mount.nav_file) as stream:
-        external_yml = yaml.load(stream)
+        external_yml = yaml.load(stream, Loader=FullLoader)
         assert isinstance(external_yml, list)
 
     url_mappers = _build_url_mappers(external_yml, mount)
