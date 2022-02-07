@@ -100,7 +100,7 @@ kotlin {
     }
     sourceSets["iosX64Main"].dependencies {
         //SQLDelight will be available only in the iOS source set, but not in Android or common
-        implementation("com.squareup.sqldelight:native-driver:%sqlDelightVersion%)
+        implementation("com.squareup.sqldelight:native-driver:%sqlDelightVersion%")
     }
 }
 ```
@@ -223,10 +223,10 @@ call in `build.gradle.kts` (`build.gradle`) of your project.
 
     ```groovy
         kotlin {
-       cocoapods {
-          //..
-          pod('AFNetworking') {
-             version = '~> 4.0.1'
+            cocoapods {
+            //...
+            pod('AFNetworking') {
+                version = '~> 4.0.1'
           }
        }
     }
@@ -384,7 +384,7 @@ import DateTools.*
                     // Path to .def file
                     defFile("src/nativeInterop/cinterop/DateTools.def")
 
-                   compilerOpts("-framework", "MyFramework", "-F/path/to/framework/"
+                   compilerOpts("-framework", "MyFramework", "-F/path/to/framework/")
                }
                val anotherInterop by cinterops.creating { /* ... */ }
             }
@@ -531,7 +531,7 @@ To minimize the effort you have to put in to deal with migration problems like t
 
 ```kotlin
 android {
-    ...
+    //...
 
     dependencies {   
         implementation("com.example.android:app-magic:12.3")
@@ -544,7 +544,7 @@ android {
 
 ```groovy
 android {
-    ...
+    //...
 
     dependencies {
         implementation 'com.example.android:app-magic:12.3'
