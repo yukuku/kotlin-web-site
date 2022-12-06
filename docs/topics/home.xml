@@ -10,24 +10,22 @@
         <description>
             Latest stable version: %kotlinVersion%
         </description>
-        <main-group>
-            <title>What's new</title>
-            <a href="whatsnew1720.md" description="Latest features: a new operator for open-ended ranges, support for compiler plugins in the Kotlin K2 compiler, the new Kotlin/Native memory manager enabled by default, support for Gradle 7.1, and more">What's New in Kotlin 1.7.20</a>
-            <a href="roadmap.md" description="Future plans on Kotlin development">Kotlin public roadmap</a>
-        </main-group>
         <tip-group>
             <a href="getting-started.md"
                description="Install Kotlin and run your first Kotlin program" type="start">Get started with Kotlin</a>
             <a href="https://play.kotlinlang.org/" description="Write, edit, run, and share Kotlin code right in the browser" type="install">Try Kotlin online</a>
         </tip-group>
+        <main-group>
+            <title>What's new</title>
+            <a href="whatsnew1720.md" description="Latest features: a new operator for open-ended ranges, support for compiler plugins in the Kotlin K2 compiler, the new Kotlin/Native memory manager enabled by default, support for Gradle 7.1, and more">What's New in Kotlin 1.7.20</a>
+            <a href="roadmap.md" description="Future plans on Kotlin development">Kotlin public roadmap</a>
+        </main-group>
         <highlighted-group>
-            <title>Featured topics</title>
-            <a href="https://kotlinlang.org/api/latest/jvm/stdlib/" description="Living essentials for everyday work with Kotlin: IO, files, threading, collections, and much more">Standard library API reference</a>
-            <a href="coding-conventions.md" description="Recommendations on the code organization, formatting, and naming">Coding conventions</a>
-            <a href="basic-types.md" description="Kotlin type system: numbers, strings, arrays, and other built-in types">Basic types</a>
-            <a href="control-flow.md" description="Conditions and loops: if, when, for, while">Control flow</a>
-            <a href="null-safety.md" description="Nullable and non-null types, elvis operator, safe calls and casts ">Null safety</a>
-            <a href="coroutines-overview.md" description="Concurrency: coroutines, flows, channels">Coroutines</a>
+            <title>API references</title>
+            <a href="https://kotlinlang.org/api/latest/jvm/stdlib/" description="Living essentials for everyday work with Kotlin: IO, files, threading, collections, and much more">Standard library</a>
+            <a href="https://kotlinlang.org/api/kotlinx.coroutines/" description="Support for coroutines like `launch`,`async`, and more">Coroutines library</a>
+            <a href="https://kotlinlang.org/api/kotlinx.serialization/" description="Support for converting data into multiple formats">Serialization library</a>
+            <a href="https://kotlinlang.org/api/latest/kotlin.test/" description="Provides annotations to mark test functions and utility functions for performing assertions in tests">Test library</a>
         </highlighted-group>
         <custom-groups>
             <group type="cards">
