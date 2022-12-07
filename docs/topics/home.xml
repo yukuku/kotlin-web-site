@@ -11,9 +11,8 @@
             Latest stable version: %kotlinVersion%
         </description>
         <tip-group>
-            <a href="getting-started.md"
-               description="Install Kotlin and run your first Kotlin program" type="start">Get started with Kotlin</a>
-            <a href="https://play.kotlinlang.org/" description="Write, edit, run, and share Kotlin code right in the browser" type="install">Try Kotlin online</a>
+            <a href="getting-started.md" description="Install Kotlin and run your first Kotlin program" type="start">Get started with Kotlin</a>
+            <a href="learning-materials-overview.md" description="Find key topics, courses, exercises and books to help you learn Kotlin" type="install">Learn Kotlin</a>
         </tip-group>
         <main-group>
             <title>What's new</title>
@@ -21,18 +20,27 @@
             <a href="roadmap.md" description="Future plans on Kotlin development">Kotlin public roadmap</a>
         </main-group>
         <highlighted-group>
-            <title>API references</title>
-            <a href="https://kotlinlang.org/api/latest/jvm/stdlib/" description="Living essentials for everyday work with Kotlin: IO, files, threading, collections, and much more">Standard library</a>
-            <a href="https://kotlinlang.org/api/kotlinx.coroutines/" description="Support for coroutines like `launch`,`async`, and more">Coroutines library</a>
-            <a href="https://kotlinlang.org/api/kotlinx.serialization/" description="Support for converting data into multiple formats">Serialization library</a>
-            <a href="https://kotlinlang.org/api/latest/kotlin.test/" description="Provides annotations to mark test functions and utility functions for performing assertions in tests">Test library</a>
+            <title>Kotlin Multiplatform Mobile</title>
+            <a href="multiplatform-mobile-getting-started.md" description="Useful links to help you start using the SDK">Get started</a>
+            <a href="multiplatform-mobile-plugin-releases.md" description="Features of the Kotlin Multiplatform Mobile plugin">Plugin releases for Android Studio</a>
+            <a href="https://www.youtube.com/playlist?list=PLlFc5cFwUnmy_oVc9YQzjasSNoAk4hk_C" description="Videos about Kotlin Multiplatform Mobile on our YouTube channel">Kotlin Multiplatform Multiverse</a>
         </highlighted-group>
         <custom-groups>
             <group type="cards">
-                <title>Kotlin Multiplatform Mobile</title>
-                <a href="multiplatform-mobile-getting-started.md" description="Useful links to help you start using the SDK">Get started</a>
-                <a href="multiplatform-mobile-plugin-releases.md" description="Features of the Kotlin Multiplatform Mobile plugin">Plugin releases for Android Studio</a>
-                <a href="https://www.youtube.com/playlist?list=PLlFc5cFwUnmy_oVc9YQzjasSNoAk4hk_C" description="Videos about Kotlin Multiplatform Mobile on our YouTube channel">Kotlin Multiplatform Multiverse</a>
+                <title>API references</title>
+                <a href="https://kotlinlang.org/api/latest/jvm/stdlib/" description="Living essentials for everyday work with Kotlin: IO, files, threading, collections, and much more">Standard library</a>
+                <a href="https://kotlinlang.org/api/kotlinx.coroutines/" description="Support for coroutines like `launch`,`async`, and more">Coroutines library</a>
+                <a href="https://kotlinlang.org/api/kotlinx.serialization/" description="Support for converting data into multiple formats">Serialization library</a>
+                <a href="https://kotlinlang.org/api/latest/kotlin.test/" description="Support for annotations to mark test functions and utility functions for performing assertions in tests">Test library</a>
+            </group>
+            <group type="cards">
+                <title>Kotlin fundamentals</title>
+                <a href="basic-syntax.md" description="Learn how to speak Kotlin">Basic syntax</a>
+                <a href="basic-types.md" description="Explore Kotlin's data types">Basic types</a>
+                <a href="control-flow.md" description="Read about `if`,`when` expressions and loops">Control flow</a>
+                <a href="functions.md" description="Read about Kotlin functions and how to declare them">Functions</a>
+                <a href="classes.md" description="Read about Kotlin classes and constructors">Classes</a>
+                <a href="null-safety.md" description="Read about how Kotlin helps you avoid null reference exceptions">Null safety</a>
             </group>
         </custom-groups>
     </section-starting-page>
