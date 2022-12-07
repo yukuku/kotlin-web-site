@@ -12,7 +12,7 @@
         </description>
         <tip-group>
             <a href="getting-started.md" description="Install Kotlin and run your first Kotlin program" type="start">Get started with Kotlin</a>
-            <a href="learning-materials-overview.md" description="Find key topics, courses, exercises and books to help you learn Kotlin" type="install">Learn Kotlin</a>
+            <a href="https://play.kotlinlang.org/" description="Write, edit, run, and share Kotlin code right in the browser" type="development">Try Kotlin online</a>
         </tip-group>
         <main-group>
             <title>What's new</title>
@@ -21,15 +21,16 @@
         </main-group>
         <highlighted-group>
             <title>Kotlin Multiplatform Mobile</title>
-            <a href="multiplatform-mobile-getting-started.md" description="Useful links to help you start using the SDK">Get started</a>
+            <a href="multiplatform-mobile-getting-started.md" description="Make your Android app work on iOS">Get started with KMM from scratch</a>
             <a href="multiplatform-mobile-plugin-releases.md" description="Features of the Kotlin Multiplatform Mobile plugin">Plugin releases for Android Studio</a>
         </highlighted-group>
         <custom-groups>
-            <group type="cards">
+            <group type="cards" display="wide">
                 <title>API references</title>
                 <a href="https://kotlinlang.org/api/latest/jvm/stdlib/" description="Living essentials for everyday work with Kotlin: IO, files, threading, collections, and much more">Standard library</a>
                 <a href="https://kotlinlang.org/api/kotlinx.coroutines/" description="Support for coroutines like `launch`,`async`, and more">Coroutines library</a>
                 <a href="https://kotlinlang.org/api/kotlinx.serialization/" description="Support for converting data into multiple formats">Serialization library</a>
+                <a href="https://kotlinlang.org/api/kotlinx-datetime/" description="Support for getting and working with date and time">Datetime library</a>
             </group>
             <group type="cards">
                 <title>Kotlin fundamentals</title>
