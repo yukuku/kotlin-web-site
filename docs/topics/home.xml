@@ -23,7 +23,6 @@
             <title>Kotlin Multiplatform Mobile</title>
             <a href="multiplatform-mobile-getting-started.md" description="Useful links to help you start using the SDK">Get started</a>
             <a href="multiplatform-mobile-plugin-releases.md" description="Features of the Kotlin Multiplatform Mobile plugin">Plugin releases for Android Studio</a>
-            <a href="https://www.youtube.com/playlist?list=PLlFc5cFwUnmy_oVc9YQzjasSNoAk4hk_C" description="Videos about Kotlin Multiplatform Mobile on our YouTube channel">Kotlin Multiplatform Multiverse</a>
         </highlighted-group>
         <custom-groups>
             <group type="cards">
@@ -31,7 +30,6 @@
                 <a href="https://kotlinlang.org/api/latest/jvm/stdlib/" description="Living essentials for everyday work with Kotlin: IO, files, threading, collections, and much more">Standard library</a>
                 <a href="https://kotlinlang.org/api/kotlinx.coroutines/" description="Support for coroutines like `launch`,`async`, and more">Coroutines library</a>
                 <a href="https://kotlinlang.org/api/kotlinx.serialization/" description="Support for converting data into multiple formats">Serialization library</a>
-                <a href="https://kotlinlang.org/api/latest/kotlin.test/" description="Support for annotations to mark test functions and utility functions for performing assertions in tests">Test library</a>
             </group>
             <group type="cards">
                 <title>Kotlin fundamentals</title>
