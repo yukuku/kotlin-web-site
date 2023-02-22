@@ -9,6 +9,8 @@
 
     <toc-element id="home.xml" toc-title="Home"/>
 
+    <toc-element toc-title="Introduction to Kotlin" id="multiplatform.md"/>
+
     <toc-element toc-title="Get started" id="getting-started.md"/>
 
     <toc-element toc-title="Language guide">
@@ -70,6 +72,12 @@
         <toc-element id="reflection.md"/>
         <toc-element id="idioms.md"/>
         <toc-element id="coding-conventions.md"/>
+    </toc-element>
+
+    <toc-element toc-title="Language reference">
+        <toc-element id="keyword-reference.md"/>
+        <toc-element toc-title="Grammar" href="https://kotlinlang.org/docs/reference/grammar.html"/>
+        <toc-element href="https://kotlin.github.io/kotlin-spec/" toc-title="Language specification"/>
     </toc-element>
 
     <toc-element toc-title="Multiplatform development">
@@ -260,12 +268,6 @@
         <toc-element toc-title="Ktor" href="https://api.ktor.io/"/>
     </toc-element>
 
-    <toc-element toc-title="Language reference">
-        <toc-element id="keyword-reference.md"/>
-        <toc-element toc-title="Grammar" href="https://kotlinlang.org/docs/reference/grammar.html"/>
-        <toc-element href="https://kotlin.github.io/kotlin-spec/" toc-title="Language specification"/>
-    </toc-element>
-
     <toc-element toc-title="Tools">
         <toc-element toc-title="Build tools">
             <toc-element toc-title="Gradle">
@@ -333,7 +335,6 @@
 
 
     <toc-element toc-title="Kotlin overview">
-        <toc-element id="multiplatform.md"/>
         <toc-element id="server-overview.md" accepts-web-file-names="httpservlets.html"/>
         <toc-element id="android-overview.md"/>
         <toc-element id="js-overview.md"/>
