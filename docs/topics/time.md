@@ -13,7 +13,7 @@ By default, time is measured using a monotonic time source but other time source
 
 To represent an amount of time, the standard library has the [`Duration`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.time/-duration/)
 class. A `Duration` can be expressed in the following units from the [`DurationUnit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.time/-duration-unit/)
-Enum class:
+enum class:
   * `NANOSECONDS`
   * `MICROSECONDS`
   * `MILLISECONDS`
@@ -24,11 +24,15 @@ Enum class:
 
 `Durations` can also be zero, negative or infinite.
 
-### Calculate duration
+### Create duration
 
-To create an instance of the `Duration` class, use the [extension properties](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.time/-duration/#companion-object-properties) 
+To create a `Duration`, use the [extension properties](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.time/-duration/#companion-object-properties) 
 available for `Int`, `Long`, and `Double` types: `nanoseconds`, `microseconds`, `milliseconds`, `seconds`, `minutes`, 
 `hours`, and `days`.
+
+> Days refer to periods of 24 hours. They are not calendar days.
+> 
+{type = "tip"}
 
 For example:
 
@@ -47,21 +51,6 @@ fun main() {
     println(fiveHundredMilliseconds) // 500ms
     println(fiveSeconds)             // 5s
     println(tenMinutes)              // 10m
-    //sampleEnd
-}
-```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
-
-To create a `Duration` of zero seconds, use the `ZERO` property:
-```kotlin
-import kotlin.time.*
-import kotlin.time.Duration.Companion.ZERO
-
-fun main() {
-    //sampleStart
-    val zero: Duration = ZERO
-
-    println(zero) // 0s
     //sampleEnd
 }
 ```
@@ -97,10 +86,12 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-### Print duration
+### Get string representation
 
-To print a `Duration`, you have already seen that you can use `println()` and `print()` functions. By default, the
-time is reported using each unit that is present. For example: `1h 0m 45.677s`.
+It can be useful to have a string representation of a `Duration` so that you can print, serialize, transfer, or store it.
+
+To get a string representation, use the `.toString()` function. By default, the time is reported using each unit that is
+present. For example: `1h 0m 45.677s` or `-(6d 5h 5m 28.284s)`
 
 To configure the output, use the `.toString()` function with your desired `Duration.Unit` and number of decimal places
 as function parameters:
@@ -112,11 +103,9 @@ import kotlin.time.DurationUnit
 
 fun main() {
     //sampleStart
-    val fiveSeconds: Duration = 5.seconds
-    
-    // Print in minutes with 2 decimal places
-    println(fiveSeconds.toString(DurationUnit.MINUTES, 2))
-    // 0,08m
+    // Print in seconds with 2 decimal places
+    println(5887.milliseconds.toString(DurationUnit.SECONDS, 2))
+    // 5.89s
     //sampleEnd
 }
 ```
@@ -138,7 +127,7 @@ fun main() {
 
 ### Convert duration
 
-To express your `Duration` in a different `Duration.Unit` you can use the properties:
+To convert your `Duration` into a different `Duration.Unit`, you can use the properties:
 * `inWholeNanoseconds`
 * `inWholeMicroseconds`
 * `inWholeSeconds`
@@ -170,15 +159,13 @@ Alternatively, you can use your desired `Duration.Unit` as a function parameter 
 For example:
 
 ```kotlin
-import kotlin.time.Duration
-import kotlin.time.Duration.Companion.minutes
+import kotlin.time.Duration.Companion.seconds
 import kotlin.time.DurationUnit
 
 fun main() {
     //sampleStart
-    val thirtyMinutes: Duration = 30.minutes
-    println(thirtyMinutes.toDouble(DurationUnit.SECONDS))
-    //1800.0
+    println(270.seconds.toDouble(DurationUnit.MINUTES))
+    // 4.5
     //sampleEnd
 }
 ```
@@ -221,7 +208,8 @@ fun main() {
 
 ### Break duration into components
 
-To break down a `Duration` into its time components and perform a further action, use the `toComponents()` function.
+To break down a `Duration` into its time components and perform a further action, use the overload of the 
+[`toComponents()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.time/-duration/to-components.html) function. 
 Add your desired action as a function or lambda expression as a function parameter.
 
 For example:
@@ -240,7 +228,9 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-<!-- Explain lambda expression -->
+In this example, the lambda expression has `hours` and `minutes` as function parameters with underscores (`_`) for the 
+unused `seconds` and `nanoseconds` parameters. The expression returns a concatenated string using [string templates](strings.md#string-templates) 
+to get the desired output format of `hours` and `minutes`.
 
 ## Time measurement
 
@@ -369,5 +359,16 @@ fun main() {
 }
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+
+## Monotonic time sources
+
+This table explains the default source of monotonic time for each platform:
+
+| Platform            | Source |
+|---------------------|---|
+| Kotlin/JVM          | `System.nanoTime()`|
+| Kotlin/JS (Node.js) | `process.hrtime()`|
+| Kotlin/JS (Browser) | `window.performance.now()` or `Date.now()`|
+| Kotlin/Native| `std::chrono::high_resolution_clock` or `std::chrono::steady_clock`|
 
 For more information about the `kotlin.time` package, see our [standard library API reference](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.time/).
