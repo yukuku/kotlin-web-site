@@ -1,12 +1,17 @@
 package builds.apiReferences.stdlib
 
 import jetbrains.buildServer.configs.kotlin.*
-import jetbrains.buildServer.configs.kotlin.BuildType
+import builds.apiReferences.kotlinx.coroutines.KotlinxCoroutinesBuildApiReference
 
 object BuildStdlibApiReference : BuildType({
   name = "Stdlib Api reference"
 
   artifactRules = "latest-version.zip"
+
+  params {
+    param("%apiTemplatesBranch%", "ktl-696-dokka-stdlib")
+    param("revers.deps.*.templatesBranch", "%templatesBranch%")
+  }
 
   dependencies {
     dependency(AbsoluteId("Kotlin_KotlinRelease_1820_LibraryReferenceLatestDocs")) {
