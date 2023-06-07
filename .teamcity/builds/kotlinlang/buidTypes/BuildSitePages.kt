@@ -3,7 +3,6 @@ package builds.kotlinlang.buidTypes
 import builds.apiReferences.kotlinx.coroutines.KotlinxCoroutinesBuildApiReference
 import builds.apiReferences.kotlinx.datetime.KotlinxDatetimeBuildApiReference
 import builds.apiReferences.kotlinx.serialization.KotlinxSerializationBuildApiReference
-import builds.apiReferences.stdlib.BuildStdlibApiReference
 import builds.kotlinlang.templates.DockerImageBuilder
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildSteps.ScriptBuildStep
@@ -24,6 +23,11 @@ object BuildSitePages : BuildType({
   vcs {
     root(vcsRoots.KotlinLangOrg)
     cleanCheckout = true
+  }
+
+  params {
+    param("%apiTemplatesBranch%", "ktl-696-dokka-stdlib")
+    param("reverse.dep.*.templatesBranch", "%apiTemplatesBranch%")
   }
 
   steps {
@@ -168,26 +172,14 @@ object BuildSitePages : BuildType({
       }
     }
 
-    dependency(BuildStdlibApiReference) {
+    dependency(AbsoluteId("Kotlin_KotlinRelease_1820_LibraryReferenceLatestDocs")) {
       snapshot {
         reuseBuilds = ReuseBuilds.NO
         onDependencyFailure = FailureAction.FAIL_TO_START
       }
-
       artifacts {
         artifactRules = "+:latest-version.zip!all-libs/** => api/core"
       }
-    }
-
-    artifacts(AbsoluteId("Kotlin_KotlinRelease_1820_LibraryReferenceLegacyDocs")) {
-      buildRule = tag("publish", """
-                +:<default>
-                +:*
-            """.trimIndent())
-      artifactRules = """
-                kotlin.test.zip!** => api/latest/kotlin.test
-                kotlin-stdlib.zip!** => api/latest/jvm/stdlib
-            """.trimIndent()
     }
   }
 })
