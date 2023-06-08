@@ -26,8 +26,7 @@ object BuildSitePages : BuildType({
     }
 
     params {
-        param("apiTemplatesBranch", "ktl-696-dokka-stdlib")
-        param("reverse.dep.*.templatesBranch", "%apiTemplatesBranch%")
+        param("reverse.dep.*.templatesBranch", "ktl-696-dokka-stdlib")
     }
 
     steps {
