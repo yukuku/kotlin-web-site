@@ -22,7 +22,7 @@ enum class:
   * `HOURS`
   * `DAYS`
 
-`Durations` can also be zero, negative or infinite.
+In addition, `Durations` can be zero, negative or infinite.
 
 ### Create duration
 
@@ -93,7 +93,7 @@ It can be useful to have a string representation of a `Duration` so that you can
 To get a string representation, use the `.toString()` function. By default, the time is reported using each unit that is
 present. For example: `1h 0m 45.677s` or `-(6d 5h 5m 28.284s)`
 
-To configure the output, use the `.toString()` function with your desired `Duration.Unit` and number of decimal places
+To configure the output, use the `.toString()` function with your desired `DurationUnit` and number of decimal places
 as function parameters:
 
 ```kotlin
@@ -111,7 +111,7 @@ fun main() {
 ```
 {kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
 
-To print the `Duration` as an [ISO-8601-compatible](https://en.wikipedia.org/wiki/ISO_8601) string, use the [`toIsoString()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.time/-duration/to-iso-string.html)
+To get an [ISO-8601-compatible](https://en.wikipedia.org/wiki/ISO_8601) string, use the [`toIsoString()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.time/-duration/to-iso-string.html)
 function:
 
 ```kotlin
