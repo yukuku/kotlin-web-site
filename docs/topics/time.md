@@ -22,7 +22,7 @@ enum class:
   * `HOURS`
   * `DAYS`
 
-In addition, `Durations` can be zero, negative or infinite.
+`Durations` can be positive, negative, zero, positive infinity, or negative infinity.
 
 ### Create duration
 
@@ -38,23 +38,31 @@ For example:
 
 ```kotlin
 import kotlin.time.*
+import kotlin.time.Duration.Companion.nanoseconds
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.Duration.Companion.minutes
+import kotlin.time.Duration.Companion.days
 
 fun main() {
     //sampleStart
     val fiveHundredMilliseconds: Duration = 500.milliseconds
-    val fiveSeconds: Duration = 5.seconds
+    val zeroSeconds: Duration = 0.seconds
     val tenMinutes: Duration = 10.minutes
+    val negativeNanosecond: Duration = (-1).nanoseconds
+    val infiniteDays: Duration = Double.POSITIVE_INFINITY.days
+    val negativeInfiniteDays: Duration = Double.NEGATIVE_INFINITY.days
 
     println(fiveHundredMilliseconds) // 500ms
-    println(fiveSeconds)             // 5s
+    println(zeroSeconds)             // 0s
     println(tenMinutes)              // 10m
+    println(negativeNanosecond)      // -1ns
+    println(infiniteDays)            // Infinity
+    println(negativeInfiniteDays)    // -Infinity
     //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-time-create-duration"}
 
 You can also perform basic arithmetic with `Durations`:
 
@@ -69,7 +77,7 @@ fun main() {
 
     println(fiveSeconds + thirtySeconds)
     // 35s
-    println(thirtySeconds -  fiveSeconds)
+    println(thirtySeconds - fiveSeconds)
     // 25s
     println(fiveSeconds * 2)
     // 10s
@@ -84,7 +92,7 @@ fun main() {
     //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-time-create-duration-arithmetic"}
 
 ### Get string representation
 
@@ -109,7 +117,7 @@ fun main() {
     //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-time-string-representation"}
 
 To get an [ISO-8601-compatible](https://en.wikipedia.org/wiki/ISO_8601) string, use the [`toIsoString()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.time/-duration/to-iso-string.html)
 function:
@@ -123,11 +131,11 @@ fun main() {
     //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-time-iso-string-representation"}
 
 ### Convert duration
 
-To convert your `Duration` into a different `Duration.Unit`, you can use the properties:
+To convert your `Duration` into a different `DurationUnit`, you can use the properties:
 * `inWholeNanoseconds`
 * `inWholeMicroseconds`
 * `inWholeSeconds`
@@ -149,12 +157,12 @@ fun main() {
     //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-time-convert-duration"}
 
-Alternatively, you can use your desired `Duration.Unit` as a function parameter in the following extension functions:
-* `toInt()`
-* `toDouble()`
-* `toLong()`
+Alternatively, you can use your desired `DurationUnit` as a function parameter in the following extension functions:
+* `.toInt()`
+* `.toDouble()`
+* `.toLong()`
 
 For example:
 
@@ -169,7 +177,7 @@ fun main() {
     //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-time-convert-duration-extension"}
 
 ### Compare duration
 
@@ -189,7 +197,7 @@ fun main() {
     //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-time-equality-duration"}
 
 To compare `Durations`, use the comparison operators (`<`, `>`):
 
@@ -204,7 +212,7 @@ fun main() {
     //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-time-compare-duration"}
 
 ### Break duration into components
 
@@ -226,7 +234,7 @@ fun main() {
     //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-time-duration-components"}
 
 In this example, the lambda expression has `hours` and `minutes` as function parameters with underscores (`_`) for the 
 unused `seconds` and `nanoseconds` parameters. The expression returns a concatenated string using [string templates](strings.md#string-templates) 
@@ -258,7 +266,7 @@ fun main() {
     //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-time-measure-time"}
 
 To measure the time taken to execute a block of code **and** the elapsed time, use inline function [`measureTimedValue`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.time/measure-time.html).
 
@@ -278,7 +286,7 @@ fun main() {
     //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-time-measure-timed-value"}
 
 By default, both functions use a monotonic time source.
 
@@ -297,7 +305,7 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-time-mark-moment"}
 
 ### Measure differences in time
 
@@ -329,7 +337,7 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-time-measure-difference"}
 
 To check if a deadline has passed or a timeout has been reached, use the [`hasPassedNow()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.time/-time-mark/has-passed-now.html)
 and [`hasNotPassedNow()`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.time/-time-mark/has-not-passed-now.html) 
@@ -358,17 +366,17 @@ fun main() {
 //sampleEnd
 }
 ```
-{kotlin-runnable="true" kotlin-min-compiler-version="1.3"}
+{kotlin-runnable="true" kotlin-min-compiler-version="1.3" id="kotlin-time-deadline=passed"}
 
 ## Monotonic time sources
 
 This table explains the default source of monotonic time for each platform:
 
-| Platform            | Source |
-|---------------------|---|
-| Kotlin/JVM          | `System.nanoTime()`|
+| Platform      | Source |
+|---------------|---|
+| Kotlin/JVM    | `System.nanoTime()`|
 | Kotlin/JS (Node.js) | `process.hrtime()`|
 | Kotlin/JS (Browser) | `window.performance.now()` or `Date.now()`|
-| Kotlin/Native| `std::chrono::high_resolution_clock` or `std::chrono::steady_clock`|
+| Kotlin/Native | `std::chrono::high_resolution_clock` or `std::chrono::steady_clock`|
 
 For more information about the `kotlin.time` package, see our [standard library API reference](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.time/).
