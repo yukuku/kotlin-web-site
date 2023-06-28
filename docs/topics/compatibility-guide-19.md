@@ -64,7 +64,7 @@ perspective
 > **Incompatible change type**: source
 >
 > **Short summary**: Kotlin 1.9 prohibits the type of an annotation being used as one of its parameter types, either directly or indirectly. This prevents cycles from being created.
-> The only exception is if the parameter type is an `Array` or `vararg` of the annotation type.
+> However, you are allowed to have parameter types that are an `Array` or a `vararg` of the annotation type.
 >
 > **Deprecation cycle**:
 > * 1.7.0: report a warning (or an error in progressive mode) on cycles in types of annotation parameters
@@ -330,7 +330,7 @@ perspective
 >   called recursively in that function's body in a compound assignment operator argument
 > - 1.9.0: raise the warning to an error
 
-### Prohibit unsound calls with expected @NotNull T and given Kotlin generic parameter with nullable bound
+### Prohibit unsound calls with expected `@NotNull T` and given Kotlin generic parameter with nullable bound
 
 > **Issue**: [KT-36770](https://youtrack.jetbrains.com/issue/KT-36770)
 >
